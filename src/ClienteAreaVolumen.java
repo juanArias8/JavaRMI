@@ -14,17 +14,18 @@ import javax.swing.JOptionPane;
  *
  * @author jnda
  */
-public class VolumenAreaCliente extends javax.swing.JFrame {
+public class ClienteAreaVolumen extends javax.swing.JFrame {
 
     /**
      * Creates new form VolumenAreaCliente
      */
-    public VolumenYarea vya;
+    public RemotaVolumenArea vya;
 
-    public VolumenAreaCliente() {
+    public ClienteAreaVolumen() {
         initComponents();
         try {
-            vya = (VolumenYarea) Naming.lookup("rmi://localhost:1099/VolumenesYareasServer");
+            vya = (RemotaVolumenArea) Naming.lookup("rmi://localhost/VolumenesYareasServer");
+            System.out.println("Constructor client!!");
         } catch (MalformedURLException | RemoteException | NotBoundException m) {
             System.out.println(m.getMessage());
         }
@@ -361,7 +362,7 @@ public class VolumenAreaCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelConoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, Short.MAX_VALUE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -567,17 +568,20 @@ public class VolumenAreaCliente extends javax.swing.JFrame {
 
     private void btnCalcularEsferaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularEsferaActionPerformed
        txtResultadoEsfera.setText("");
-        if (!(txtRadioEsfera.getText().toString().equals(""))) {
-            double radio = Double.parseDouble(txtRadioEsfera.getText().toString());
+        if (!(txtRadioEsfera.getText().equals(""))) {
+            
+            double radio = Double.parseDouble(txtRadioEsfera.getText());
             double resultadoArea = 0;
             double resultadoVolumen = 0;
             String resultado = "";
+            
             try {
                 resultadoArea = vya.calcularAEsfera(radio);
                 resultadoVolumen = vya.calcularVEsfera(radio);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
+            
             resultado += "El área de la esfera es ==> " + resultadoArea + "\n" +
                     "El Volumen de la esfera es ==> " + resultadoVolumen + "\n";
             txtResultadoEsfera.setText(resultado);
@@ -587,19 +591,109 @@ public class VolumenAreaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCalcularEsferaActionPerformed
 
     private void btnCalcularCilindroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularCilindroActionPerformed
-        // TODO add your handling code here:
+         txtResultadoCilindro.setText("");
+        if (!(txtRadioCilindro.getText().equals(""))
+                && !(txtAlturaCilindro.getText().equals(""))) {
+            
+            double radio = Double.parseDouble(txtRadioCilindro.getText());
+            double altura = Double.parseDouble(txtAlturaCilindro.getText());
+            double resultadoArea = 0;
+            double resultadoVolumen = 0;
+            String resultado = "";
+            
+            try {
+                resultadoArea = vya.calcularACilindro(radio, altura);
+                resultadoVolumen = vya.calcularVCilindro(radio, altura);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            
+            resultado += "El área del cilindro es ==> " + resultadoArea + "\n" +
+                    "El Volumen del cilindro es ==> " + resultadoVolumen + "\n";
+            txtResultadoCilindro.setText(resultado);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error ingresando datos", "Error",  JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCalcularCilindroActionPerformed
 
     private void btnCalcularConoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularConoActionPerformed
-        // TODO add your handling code here:
+         txtResultadoCono.setText("");
+        if (!(txtRadioCono.getText().equals(""))
+                && !(txtAlturaCono.getText().equals(""))
+                && !(txtgeneratrizCono.getText().equals(""))) {
+            
+            double radio = Double.parseDouble(txtRadioCono.getText());
+            double altura = Double.parseDouble(txtAlturaCono.getText());
+            double generatriz = Double.parseDouble(txtgeneratrizCono.getText());
+            double resultadoArea = 0;       
+            double resultadoVolumen = 0;
+            String resultado = "";
+            
+            try {
+                resultadoArea = vya.calcularACono(radio, generatriz);
+                resultadoVolumen = vya.calcularVCono(radio, altura);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            
+            resultado += "El área del cono es ==> " + resultadoArea + "\n" +
+                    "El Volumen del cono es ==> " + resultadoVolumen + "\n";
+            txtResultadoCono.setText(resultado);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error ingresando datos", "Error",  JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCalcularConoActionPerformed
 
     private void btnCalcularCuboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularCuboActionPerformed
-        // TODO add your handling code here:
+         txtResultadoCubo.setText("");
+        if (!(txtLadoCubo.getText().equals(""))) {
+            
+            double lado = Double.parseDouble(txtLadoCubo.getText());
+            double resultadoArea = 0;
+            double resultadoVolumen = 0;
+            String resultado = "";
+            
+            try {
+                resultadoArea = vya.calcularACubo(lado);
+                resultadoVolumen = vya.calcularVCubo(lado);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            
+            resultado += "El área del cubo es ==> " + resultadoArea + "\n" +
+                    "El Volumen del cubo es ==> " + resultadoVolumen + "\n";
+            txtResultadoCubo.setText(resultado);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error ingresando datos", "Error",  JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCalcularCuboActionPerformed
 
     private void btnOrtoedroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrtoedroActionPerformed
-        // TODO add your handling code here:
+         txtResultadoOrtoedro.setText("");
+        if (!(txtAltoOrtoedro.getText().equals(""))
+                && !(txtAnchoOrtoedro.getText().equals("")) 
+                && !(txtProfundoOrtoedro.getText().equals(""))) {
+            
+            double alto = Double.parseDouble(txtAltoOrtoedro.getText());
+            double ancho = Double.parseDouble(txtAnchoOrtoedro.getText());
+            double profundo = Double.parseDouble(txtProfundoOrtoedro.getText());
+            double resultadoArea = 0;
+            double resultadoVolumen = 0;
+            String resultado = "";
+            
+            try {
+                resultadoArea = vya.calcularAOrtoedro(alto, ancho, profundo);
+                resultadoVolumen = vya.calcularVOrtoedro(alto, ancho, profundo);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            
+            resultado += "El área del ortoedro es ==> " + resultadoArea + "\n" +
+                    "El Volumen del ortoedro es ==> " + resultadoVolumen + "\n";
+            txtResultadoOrtoedro.setText(resultado);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error ingresando datos", "Error",  JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnOrtoedroActionPerformed
 
     /**
@@ -619,20 +713,21 @@ public class VolumenAreaCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VolumenAreaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteAreaVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VolumenAreaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteAreaVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VolumenAreaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteAreaVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VolumenAreaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteAreaVolumen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VolumenAreaCliente().setVisible(true);
+                new ClienteAreaVolumen().setVisible(true);
             }
         });
     }

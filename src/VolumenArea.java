@@ -3,9 +3,9 @@ import java.rmi.*;
 import java.rmi.server.*;
 import java.net.*;
 
-public class VolumenYarea extends UnicastRemoteObject implements VolumenYareaRemota {
+public class VolumenArea extends UnicastRemoteObject implements RemotaVolumenArea {
 
-    public VolumenYarea() throws RemoteException {
+    public VolumenArea() throws RemoteException {
         try {
             System.out.println("constructor!!");  
         } catch (Exception e) {

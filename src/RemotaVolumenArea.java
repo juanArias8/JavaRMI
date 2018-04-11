@@ -1,7 +1,7 @@
 
 import java.rmi.*;
 
-public interface VolumenYareaRemota extends Remote{
+public interface RemotaVolumenArea extends Remote{
     
     public double calcularACilindro (double radio, double altura) throws RemoteException;
     public double calcularVCilindro (double radio, double altura) throws RemoteException;
