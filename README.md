@@ -12,6 +12,8 @@ Invocación de métodos remotos de java es un mecanismo ofrecido por Java para i
 * * javac ServidorVolumenArea.java
 * * javac ClienteAreaVolumen.java
 * Registrar el rmi con rmiregistry &
-* Ejecutar el servidor con java ServidorVolumenArea
-* Ejecutar el cliente con java ClienteAreaVolumen
+* Ejecutar el servidor 
+* * java ServidorVolumenArea
+* Ejecutar el cliente 
+* * java ClienteAreaVolumen
 ***
