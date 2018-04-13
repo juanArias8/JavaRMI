@@ -6,7 +6,7 @@ Invocation of remote Java methods is a mechanism offered by Java to invoke a met
 ### Execution steps
 * Clone the repository
 * Address the ./JavaRMI/src
-* Open the terminal in said folder
+* Open the terminal in ./JavaRMI/src folder
 * Compile the .java files in the following order:
 * * javac RemoteVolumeAndArea.java
 * * javac VolumeAndArea.java
@@ -24,7 +24,7 @@ Invocación de métodos remotos de java es un mecanismo ofrecido por Java para i
 ### Pasos de ejecuçión
 * Clonar el repositorio
 * Dirigirse a la ./JavaRMI/src
-* Abrir la terminal en dicha carpeta
+* Abrir la terminal en la carpeta ./JavaRMI/src
 * Compilar los archivos .java en el siguiente orden:
 * * javac RemoteVolumeAndArea.java
 * * javac VolumeAndArea.java
