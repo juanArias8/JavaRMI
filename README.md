@@ -8,15 +8,15 @@ Invocation of remote Java methods is a mechanism offered by Java to invoke a met
 * Address the ./JavaRMI/src
 * Open the terminal in said folder
 * Compile the .java files in the following order:
-* * javac RemotaVolumenArea.java
-* * javac VolumeArea.java
-* * javac ServerVolumeArea.java
-* * javac ClientAreaVolume.java
+* * javac RemoteVolumeAndArea.java
+* * javac VolumeAndArea.java
+* * javac ServerVolumeAndArea.java
+* * javac ClientVolumeAndArea.java
 * Register the rmi with rmiregistry &
 * Run the server
-* * java Server VolumeArea
+* * java ServerVolumeAndArea
 * Run the client
-* * java ClientAreaVolume
+* * java ClientVolumeAndArea
 ***
 ***
 Invocación de métodos remotos de java es un mecanismo ofrecido por Java para invocar un método de manera remota. Forma parte del entorno estándar de ejecución de Java y proporciona un mecanismo simple para la comunicación de servidores en aplicaciones distribuidas basadas exclusivamente en Java.  
@@ -26,13 +26,13 @@ Invocación de métodos remotos de java es un mecanismo ofrecido por Java para i
 * Dirigirse a la ./JavaRMI/src
 * Abrir la terminal en dicha carpeta
 * Compilar los archivos .java en el siguiente orden:
-* * javac  RemotaVolumenArea.java
-* * javac VolumenArea.java
-* * javac ServidorVolumenArea.java
-* * javac ClienteAreaVolumen.java
+* * javac RemoteVolumeAndArea.java
+* * javac VolumeAndArea.java
+* * javac ServerVolumeAndArea.java
+* * javac ClientVolumeAndArea.java
 * Registrar el rmi con rmiregistry &
 * Ejecutar el servidor 
-* * java ServidorVolumenArea
+* * java ServerVolumeAndArea
 * Ejecutar el cliente 
-* * java ClienteAreaVolumen
+* * java ClientVolumeAndArea
 ***
